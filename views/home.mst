@@ -1,5 +1,32 @@
-<h1>Seja bem-bindo(a) ao meu processo de aprendizado de Nodejs</h1>
+{{> header}}
+
+<hr>
+
+<h2>Seja bem-bindo(a) ao meu processo de aprendizado de Nodejs</h2>
 
 <p>Espero que possa aprender algo aqui também!!!</p>
 
-<p>Assinado: {{name}}, {{age}} anos</p>
+{{#open}}
+    <p>Assinado: {{name}} {{surname}}</p>
+{{/open}}
+
+<hr>
+
+<ul>
+    {{#objectives}}
+        <li>{{.}}</li>
+    {{/objectives}}
+</ul>
+
+<hr>
+
+<ul>
+    {{#studies}}
+        <li>{{topic}}, {{hours}} horas</li>
+    {{/studies}}
+</ul>
+{{^studies}}
+ <p>Você não possui matérias para estudar, parabéns!</p>
+ {{/studies}}
+
+<hr>
