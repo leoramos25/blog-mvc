@@ -1,32 +1,5 @@
 {{> header}}
-
 <hr>
+<h2>Home</h2>
 
-<h2>Seja bem-bindo(a) ao meu processo de aprendizado de Nodejs</h2>
-
-<p>Espero que possa aprender algo aqui também!!!</p>
-
-{{#open}}
-    <p>Assinado: {{name}} {{surname}}</p>
-{{/open}}
-
-<hr>
-
-<ul>
-    {{#objectives}}
-        <li>{{.}}</li>
-    {{/objectives}}
-</ul>
-
-<hr>
-
-<ul>
-    {{#studies}}
-        <li>{{topic}}, {{hours}} horas</li>
-    {{/studies}}
-</ul>
-{{^studies}}
- <p>Você não possui matérias para estudar, parabéns!</p>
- {{/studies}}
-
-<hr>
+<p>Usuário logado: {{userInfo.name}}</p>

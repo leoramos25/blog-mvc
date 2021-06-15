@@ -1,1 +1,22 @@
-<h1>NodeJS<h1>
+<html>
+
+    <head>
+        {{#pageTitle}}
+        <title>{{pageTitle}}</title>
+        {{/pageTitle}}
+        {{^pageTitle}}
+        <title>{{helpers.defaultPageTitle}}</title>
+        {{/pageTitle}}
+    </head>
+
+    <body>
+        <h1>Learning NodeJS</h1>
+        <hr>        
+        <ul>
+            {{#helpers.menu}}
+            <li><a href="{{slug}}">{{name}}</a></li>
+            {{/helpers.menu}}
+        </ul>
+    </body>
+
+</html>
