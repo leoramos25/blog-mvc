@@ -1,5 +1,4 @@
 {{> header}}
-<hr>
 <h2>Home</h2>
 
 <p>Usuário logado: {{userInfo.name}}</p>

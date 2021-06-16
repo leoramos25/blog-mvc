@@ -1,5 +1,4 @@
 {{> header}}
-<hr>
 <h1>Digite seus dados para entrar</h1>
 <form>
     <label>

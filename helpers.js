@@ -1,10 +1,7 @@
-exports.defaultPageTitle = 'Learning NodeJS';
+exports.defaultPageTitle = 'NodeJS';
 
 exports.menu = [
     {name:'Home', slug:'/'},
-    {name:'Libraries', slug:'/libraries'},
-    {name:'About', slug:'/about'},
-    {name:'Contact', slug:'/contact'},
     {name:'Login', slug:'/login'},
-    {name:'Register', slug:'/register'},
+    {name:'Add post', slug:'/post/add'}
 ];

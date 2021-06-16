@@ -1,0 +1,21 @@
+<h1>Adicionar post</h1>
+
+<form method='POST'>
+    <label>
+        Título:<br>
+        <input type="text" name="title"/>
+    </label>
+    <br/>
+    <label>
+        Texto:<br>
+        <textarea name="body"></textarea>
+    </label>
+    <br/>
+    <label>
+    Tags:
+
+    </label>
+    <br/>
+    <input type="submit" value="Salvar">
+
+</form>

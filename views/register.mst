@@ -1,5 +1,4 @@
 {{> header}}
-<hr>
 <h1>Faça seu cadastro</h1>
 <form>
     <label>
