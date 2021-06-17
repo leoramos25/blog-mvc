@@ -1,3 +1,4 @@
+{{> header}}
 <h1>Adicionar post</h1>
 
 <form method='POST'>
