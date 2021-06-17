@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 require('dotenv').config({path:'variables.env'})
 
 //Database connection
-mongoose.connect(process.env.DATABASE, {useNewUrlParser:true, useUnifiedTopology:true});
+mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+    useFindAndModify:false,
+});
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (error) => {
     console.error('ERRO: ' + error.message);
