@@ -7,28 +7,32 @@
         {{^pageTitle}}
         <title>{{helpers.defaultPageTitle}}</title>
         {{/pageTitle}}
+        <link rel="stylesheet" href="/assets/css/template.css"/>
     </head>
 
     <body>
-        <h1>Learning NodeJS</h1>
-        <hr>        
-        <ul>
-            {{#helpers.menu}}
-            <li><a href="{{slug}}">{{name}}</a></li>
-            {{/helpers.menu}}
-        </ul>
-        <hr>
+        <header>
+            <h1>Learning NodeJS</h1>
+            <hr>        
+            <ul>
+                {{#helpers.menu}}
+                <li><a href="{{slug}}">{{name}}</a></li>
+                {{/helpers.menu}}
+            </ul>
+            <hr/>
+        </header>
         {{#flashes}}
             {{#sucess}}
-                <div>{{.}}</div>
+                <div class="warning">{{.}}</div>
             {{/sucess}}
             {{#error}}
-                <div>{{.}}</div>
+                <div class="warning">{{.}}</div>
             {{/error}}
             {{#info}}
-                <div>{{.}}</div>
+                <div class="warning">{{.}}</div>
             {{/info}}
         {{/flashes}}
+        
     </body>
 
 </html>
