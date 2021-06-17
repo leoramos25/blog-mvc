@@ -7,6 +7,7 @@ exports.add = (req, res) => {
 };
 
 exports.addAction =  async (req, res) => {
+    req.body.tags = req.body.tags.split(',').map(tag => tag.trim());
     const post = new Post(req.body);
 
     try{
@@ -27,6 +28,7 @@ exports.edit = async (req, res) => {
 };
 
 exports.editAction = async (req, res) => {
+    req.body.tags = req.body.tags.split(',').map(tag => tag.trim());
     req.body.slug = slug(req.body.title, {lower:true});
 
     try {
