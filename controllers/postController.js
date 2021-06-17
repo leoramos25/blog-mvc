@@ -10,7 +10,7 @@ exports.addAction =  async (req, res) => {
 
     try{
     await post.save();
-    }catch(error) {
+    } catch(error) {
         req.flash('error', 'Error, try again later');
         return res.redirect('/post/add');
     };

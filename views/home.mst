@@ -1,4 +1,8 @@
 {{> header}}
 <h2>Home</h2>
 
-<p>Usuário logado: {{userInfo.name}}</p>
+{{#posts}}
+    <h3>{{title}}</h3>
+    <p>{{body}}</p>
+    <hr>
+{{/posts}}
