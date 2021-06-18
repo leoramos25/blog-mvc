@@ -1,6 +1,6 @@
 {{> header}}
+<img src="/media/{{post.photo}}" width="300" height="200"/>
 <h1>{{post.title}}</h1>
-
 <article>{{post.body}}</article>
 <hr/>
 <small>{{post.tags}}</small>
