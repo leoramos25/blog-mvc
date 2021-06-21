@@ -1,14 +1,9 @@
 {{> header}}
 <h1>Faça seu cadastro</h1>
-<form>
+<form method="POST">
     <label>
         Nome:<br>
         <input type="text" name="name"/>
-    </label>
-    <br>    
-    <label>
-        Sobrenome:<br> 
-        <input type="text" name="surname"/>
     </label>
     <br>    
     <label>
@@ -26,5 +21,7 @@
         <input type="password" name="passwordConfirm"/>
     </label>
     <br>
-    <button>Cadastrar</button>
+    <label>
+        <input type="submit" value="Cadastrar">
+    </label>
 </form>
