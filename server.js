@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 require('dotenv').config({path:'variables.env'})
 
 //Database connection

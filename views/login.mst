@@ -1,6 +1,6 @@
 {{> header}}
 <h1>Digite seus dados para entrar</h1>
-<form>
+<form method="POST">
     <label>
     E-mail:<br>
     <input type="email" placeholder="exemplo@gmail.com" name="email"/>
@@ -8,8 +8,8 @@
     <br>
     <label>
         Senha:<br> 
-        <input type="password" name="password"/>
+        <input type="password" name="password" value=""/>
     </label>    
     <br>
-    <button>Entrar</button>
+    <input type="submit" value="Entrar">
 </form>

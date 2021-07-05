@@ -1,12 +1,11 @@
 const express = require('express');
 const mustache = require('mustache-express');
-const router = require('./routes/index');
+const router = require('./routes/routes');
 const helpers = require('./helpers');
 const errorHandler = require('./handlers/errorHandler');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('express-flash');
-
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -19,11 +18,13 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));
 
 app.use(cookieParser(process.env.SECRET));
+
 app.use(session({
     secret:process.env.SECRET,
     resave:false,
     saveUninitialized:false,
 }));
+
 app.use(flash());
 
 app.use((req, res, next) => {
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
 
 //passport settings
 app.use(passport.initialize());
+
 app.use(passport.session());
 
 const User = require('./models/User');
