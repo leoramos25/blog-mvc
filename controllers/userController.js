@@ -14,6 +14,8 @@ exports.loginAction = (req, res) => {
             return;
         }
 
+        req.login(result, () => { });
+
         req.flash('sucess', 'You are loged!');
         res.redirect('/');
     });
@@ -36,4 +38,9 @@ exports.registerAction = (req, res) => {
         req.flash('sucess', 'Registration performed sucessfully!');
         res.redirect('/users/login');
     });
+};
+
+exports.logout = (req, res) => {
+    req.logout();
+    res.redirect('/');
 };

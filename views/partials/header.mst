@@ -13,7 +13,10 @@
     <body>
         <header>
             <h1>Learning NodeJS</h1>
-            <hr>        
+            {{#user}}
+                <p>Olá, {{user.name}}. <a href="/users/logout">Sair</a></p>
+            {{/user}}
+            <hr>     
             <ul>
                 {{#helpers.menu}}
                 <li><a href="{{slug}}">{{name}}</a></li>
