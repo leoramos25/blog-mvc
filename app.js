@@ -33,9 +33,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-    res.locals.helpers = helpers;
+    res.locals.helpers = { ...helpers };
     res.locals.flashes = req.flash();
     res.locals.user = req.user;
+
+    if (req.isAuthenticated()) {
+        res.locals.helpers.menu = res.locals.helpers.menu.filter(i => i.logged);
+    } else {
+        res.locals.helpers.menu = res.locals.helpers.menu.filter(i => i.guest);
+    }
+
     next();
 });
 

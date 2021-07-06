@@ -14,7 +14,7 @@
         <header>
             <h1>Learning NodeJS</h1>
             {{#user}}
-                <p>Olá, {{user.name}}. <a href="/users/logout">Sair</a></p>
+                <p>Olá, {{user.name}}!</p>
             {{/user}}
             <hr>     
             <ul>

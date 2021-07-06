@@ -9,8 +9,6 @@ exports.index = async (req, res) => {
         tag: '',
     };
 
-    console.log(req.user);
-
     data.tag = req.query.tag;
     const postFilter = (typeof data.tag != 'undefined') ? { tags: data.tag } : {};
 
