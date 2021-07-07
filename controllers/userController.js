@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const crypto = require('crypto');
+const mailHandler = require('../handlers/mailHandler');
 
 exports.login = (req, res) => {
     res.render('login');
@@ -51,7 +53,7 @@ exports.profile = (req, res) => {
 
 exports.profileAction = async (req, res) => {
     try {
-        const user =  await User.findOneAndUpdate(
+        const user = await User.findOneAndUpdate(
             { _id: req.user._id },
             { name: req.body.name, email: req.body.email },
             { new: true, runValidators: true }
@@ -64,4 +66,81 @@ exports.profileAction = async (req, res) => {
 
     req.flash('sucess', 'Profile is updated!');
     res.redirect('/profile');
+};
+
+exports.forget = (req, res) => {
+    res.render('forget');
+};
+
+exports.forgetAction = async (req, res) => {
+    const user = await User.findOne({ email: req.body.email }).exec();
+    if (!user) {
+        req.flash('error', 'sended email!');
+        res.redirect('/users/forget');
+        return;
+    }
+
+    user.resetPasswordToken = crypto.randomBytes(20).toString('hex');
+    user.resetPasswordTokenExpires = Date.now() + 3600000;
+    await user.save();
+
+    const redefinePasswordLink = `http://${req.headers.host}/users/reset/${user.resetPasswordToken}`;
+
+    const to = `${user.name} <${user.email}>`;
+
+    const html = `Test send email with link for reset password: <a href="${redefinePasswordLink}">Change password</a>`;
+    
+    const text = `Test send email with link for reset password: ${redefinePasswordLink}`;
+
+    mailHandler.send({
+        to,
+        subject: 'Password reset',
+        html,
+        text,
+    });
+
+    req.flash('sucess', 'Instructions email sended!');
+    res.redirect('/users/login');
+
+};
+
+exports.forgetToken = async (req, res) => {
+    const user = User.findOne({
+        resetPasswordToken: req.param.token,
+        resetPasswordTokenExpires: { $gt: Date.now() },
+    }).exec();
+
+    if (!user) {
+        req.flash('error', 'Token expired');
+        res.redirect('/users/forget');
+        return;
+    };
+
+    res.render('forgetPassword');
+};
+
+exports.forgetTokenAction = async (req, res) => {
+    const user = await User.findOne({
+        resetPasswordToken: req.params.token,
+        resetPasswordTokenExpires: { $gt: Date.now() },
+    }).exec();
+
+    if (!user) {
+        req.flash('error', 'Token expired');
+        res.redirect('/users/forget');
+        return;
+    };
+
+    if (req.body.password != req.body['password-confirm']) {
+        req.flash('error', 'Passwords do not match!');
+        res.redirect('back');
+        return;
+    }
+
+    user.setPassword(req.body.password, async () => {
+        await user.save();
+
+        req.flash('sucess', 'password changed!');
+        res.redirect('/');
+    });
 };

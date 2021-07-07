@@ -17,6 +17,6 @@ exports.changePassword = (req, res) => {
         await req.user.save();
 
         req.flash('sucess', 'password changed!');
-        res.redirect('/profile');
+        res.redirect('/');
     });
 };

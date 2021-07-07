@@ -1,5 +1,5 @@
 {{> header}}
-<h1>Digite seus dados para entrar</h1>
+<h1>Enter your details to login</h1>
 <form method="POST">
     <label>
     E-mail:<br>
@@ -13,3 +13,5 @@
     <br>
     <input type="submit" value="Entrar">
 </form>
+
+<a href="/users/forget">I forgot my password</a>
